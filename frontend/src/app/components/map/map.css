@@ -1,0 +1,11 @@
+
+:host {
+  display: block;
+  height: 100%; /* Erbt 100vh von app.component */
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  border: 2px solid red;
+}

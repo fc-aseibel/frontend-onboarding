@@ -1,0 +1,28 @@
+name: Angular CI
+on: [push]
+jobs:
+  ci-cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.1.0'
+
+      - name: 🏗️ Build Angular App
+        run: ./build.sh
+        working-directory: ./frontend
+
+      - name: ✅ Run Unit Tests
+        run: ./test.sh
+        working-directory: ./frontend
+
+      - name: 🚀 Deploy Application to GHCR
+        run: ./deploy.sh
+        working-directory: ./frontend
+        env:
+          GHCR_PAT: ${{ secrets.GHCR_PAT }}
+          GITHUB_ACTOR: ${{ github.actor }}
