@@ -1,6 +1,3 @@
-const puppeteer = require('puppeteer');
-process.env.CHROME_BIN = puppeteer.executablePath();
-
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -8,15 +5,22 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
+      require('karma-spec-reporter'), // ✅ NEU
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
-      clearContext: false // Zeigt Testergebnisse im Browser an
+      clearContext: false
     },
-    reporters: ['progress', 'kjhtml'],
-    browsers: ['ChromeHeadless'],
+    reporters: ['spec'], // ✅ nur spec
+    specReporter: {
+      suppressErrorSummary: false,
+      suppressFailed: false,
+      suppressPassed: false,
+      suppressSkipped: true,
+      showSpecTiming: true
+    },
+    browsers: ['ChromeHeadlessNoSandbox'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',

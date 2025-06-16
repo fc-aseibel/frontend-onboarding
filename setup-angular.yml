@@ -1,0 +1,56 @@
+# setup-angular.yml
+- name: Setup Angular development environment
+  hosts: localhost
+  vars:
+    node_version: "v24.1.0"
+    nvm_version: "0.40.3"
+    angular_cli_version: "20.0.0"
+    puppeteer_version: "24.9.0"
+    nvm_source: |
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+  tasks:
+    - name: Install Podman
+      become: true
+      ansible.builtin.package:
+        name: podman
+        state: present
+
+    - name: Check if nvm {{ nvm_version }} is installed
+      ansible.builtin.shell: |
+        if [ -f "$HOME/.nvm/nvm.sh" ]; then
+          . "$HOME/.nvm/nvm.sh"
+          nvm --version
+        fi
+      args:
+        executable: /bin/bash
+      register: nvm_version_output
+      failed_when: false
+
+    - name: Install nvm if version is not {{ nvm_version }}
+      ansible.builtin.shell: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash
+      args:
+        executable: /bin/bash
+      when: nvm_version_output.stdout != "{{ nvm_version }}"
+
+    - name: Check if Node.js {{ node_version }} is already installed
+      ansible.builtin.shell: |
+        {{ nvm_source }}
+        nvm ls {{ node_version }} | grep -q "{{ node_version }}"
+      args:
+        executable: /bin/bash
+      register: node_check
+      ignore_errors: true
+
+    - name: Install Node.js
+      ansible.builtin.shell: |
+        {{ nvm_source }}
+        nvm install {{ node_version }}
+        nvm use {{ node_version }}
+      args:
+        executable: /bin/bash
+      when: node_check.rc != 0
+
+ 

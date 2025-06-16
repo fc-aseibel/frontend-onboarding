@@ -1,0 +1,17 @@
+[out:json][timeout:180];
+// Fläche Hamburg (administrative boundary)
+area["name"="Hamburg"]["boundary"="administrative"]->.searchArea;
+
+// Alle POIs mit Name oder Kategorie in Hamburg
+(
+  node(area.searchArea)
+    [~"^(amenity|shop|leisure|tourism|office|craft|man_made)$"~".*"];
+  way(area.searchArea)
+    [~"^(amenity|shop|leisure|tourism|office|craft|man_made)$"~".*"];
+  relation(area.searchArea)
+    [~"^(amenity|shop|leisure|tourism|office|craft|man_made)$"~".*"];
+);
+
+// Gib alle relevanten Tags + Geometrie zurück
+out center tags;
+

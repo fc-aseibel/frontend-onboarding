@@ -8,7 +8,6 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 2px 8px rgba(79, 140, 255, 0.08);
-    border-radius: 0 0 12px 12px;
 }
 
 .header-logo {

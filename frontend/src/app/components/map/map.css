@@ -1,11 +1,20 @@
+.map-block {
+  max-width: 900px;      /* Oder dein gewünschtes Limit */
+  margin: 0 auto;        /* Zentriert die Box */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
-:host {
+}
+
+.map-block app-poi-filter {
   display: block;
-  height: 100%; /* Erbt 100vh von app.component */
+  padding: 1rem;
+  border-bottom: 1px solid #ddd; /* Trenne Formular von Map */
 }
 
 #map {
-  height: 100%;
   width: 100%;
-  border: 2px solid red;
+  height: 600px;
 }

@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>
+    Kategorie:
+    <select formControlName="amenity">
+      <option value="">Alle</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+  </label>
+
+  <label>
+    Radius (km):
+    <input type="number" formControlName="radius" min="0.1" step="0.1">
+  </label>
+
+  <button type="submit">Anwenden</button>
+</form>
