@@ -27,5 +27,5 @@ npm start
 ```
 cd frontend
 npm init
-npm start
+npm run start-dev
 ```

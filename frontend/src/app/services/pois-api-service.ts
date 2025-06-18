@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, switchMap, take } from 'rxjs';
-import { AppConfigService } from './app-config-service';
 
 export interface Poi {
   id: number;
@@ -15,16 +14,10 @@ export interface Poi {
   providedIn: 'root',
 })
 export class PoisApiService {
-  constructor(private http: HttpClient, private config: AppConfigService) {}
+  constructor(private http: HttpClient) {}
 
-  private getBaseUrl(): Observable<string> {
-    return this.config.apiBaseUrl$.pipe(take(1));
-  }
-
-  getPois() {
-    return this.getBaseUrl().pipe(
-      switchMap(baseUrl => this.http.get<Poi[]>(`${baseUrl}/pois`))
-    );
+  getPois(): Observable<Poi[]>{
+    return this.http.get<Poi[]>('/frontend/api/pois');
   }
 
   getPoisInRadius(
@@ -34,22 +27,18 @@ export class PoisApiService {
     radius: number
   ): Observable<Poi[]> {
     let params = new HttpParams()
-      .set('lat', lat.toString())
-      .set('lon', lon.toString())
+      .set('center_latitude', lat.toString())
+      .set('center_longitude', lon.toString())
       .set('radius', radius.toString());
 
     if (amenity) {
-      params = params.set('amenity', amenity);
+      params = params.set('category', amenity);
     }
 
-    return this.getBaseUrl().pipe(
-      switchMap(baseUrl => this.http.get<Poi[]>(`${baseUrl}/pois-in-radius`, { params }))
-    );
+    return this.http.get<Poi[]>('/frontend/api/pois', { params });
   }
 
   getCategories(): Observable<string[]> {
-    return this.getBaseUrl().pipe(
-      switchMap(baseUrl => this.http.get<string[]>(`${baseUrl}/categories`))
-    );
+    return this.http.get<string[]>('/frontend/api/categories');
   }
 }

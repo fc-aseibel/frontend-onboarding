@@ -19,10 +19,10 @@ server.get('/categories', (req, res) => {
 
 
 // Dein Custom Radius-Filter, wenn gewünscht
-server.get('/pois-in-radius', (req, res) => {
-  const amenity = req.query.amenity;
-  const lat = parseFloat(req.query.lat);
-  const lon = parseFloat(req.query.lon);
+server.get('/pois', (req, res) => {
+  const amenity = req.query.category;
+  const lat = parseFloat(req.query.center_latitude);
+  const lon = parseFloat(req.query.center_longitude);
   const radius = parseFloat(req.query.radius); // km
 
   const pois = router.db.get('pois')

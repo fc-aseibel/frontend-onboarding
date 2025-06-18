@@ -3,22 +3,16 @@ import { PoisApiService, Poi } from './pois-api-service';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
-import { AppConfigService } from './app-config-service';
 
 describe('PoisApiService', () => {
   let service: PoisApiService;
   let httpMock: HttpTestingController;
 
-  const mockConfig = {
-    apiBaseUrl$: of('http://localhost:3000')
-  };
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        PoisApiService,
-        { provide: AppConfigService, useValue: mockConfig }
+        PoisApiService
       ]
     })
 
@@ -44,7 +38,7 @@ describe('PoisApiService', () => {
       expect(pois).toEqual(mockPois);
     });
 
-    const req = httpMock.expectOne('http://localhost:3000/pois');
+    const req = httpMock.expectOne('/frontend/api/pois');
     expect(req.request.method).toBe('GET');
     req.flush(mockPois);
   });
@@ -57,10 +51,10 @@ describe('PoisApiService', () => {
     });
 
     const req = httpMock.expectOne(r =>
-      r.url === 'http://localhost:3000/pois-in-radius' &&
-      r.params.get('amenity') === 'cafe' &&
-      r.params.get('lat') === '53.5' &&
-      r.params.get('lon') === '10' &&
+      r.url === '/frontend/api/pois' &&
+      r.params.get('category') === 'cafe' &&
+      r.params.get('center_latitude') === '53.5' &&
+      r.params.get('center_longitude') === '10' &&
       r.params.get('radius') === '1'
     );
     expect(req.request.method).toBe('GET');
@@ -75,10 +69,10 @@ describe('PoisApiService', () => {
     });
 
     const req = httpMock.expectOne(r =>
-      r.url === 'http://localhost:3000/pois-in-radius' &&
-      r.params.get('amenity') === null &&
-      r.params.get('lat') === '53.5' &&
-      r.params.get('lon') === '10' &&
+      r.url === '/frontend/api/pois' &&
+      r.params.get('category') === null &&
+      r.params.get('center_latitude') === '53.5' &&
+      r.params.get('center_longitude') === '10' &&
       r.params.get('radius') === '1'
     );
     expect(req.request.method).toBe('GET');
@@ -92,7 +86,7 @@ describe('PoisApiService', () => {
       expect(cats).toEqual(mockCats);
     });
 
-    const req = httpMock.expectOne('http://localhost:3000/categories');
+    const req = httpMock.expectOne('/frontend/api/categories');
     expect(req.request.method).toBe('GET');
     req.flush(mockCats);
   });

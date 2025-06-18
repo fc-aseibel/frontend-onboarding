@@ -36,6 +36,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: fc-aseibel/gitops-onboarding
+          ref: main
           token: ${{ secrets.GITOPS_REPO_PAT }}
 
       - name: Configure Git user
