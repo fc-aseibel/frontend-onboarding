@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { PoisApiService } from '../../services/pois-api-service';
 import { CommonModule } from '@angular/common';
+import { tap } from 'rxjs/internal/operators/tap';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-poi-filter',
@@ -23,10 +25,20 @@ export class PoiFilter implements OnInit {
   });
 
   ngOnInit() {
-    this.api.getCategories().subscribe({
-      next: cats => this.categories = cats,
-      error: err => console.error('Fehler beim Laden der Kategorien:', err)
+    console.log('Initializing PoiFilter ...');
+    
+    this.api.getCategories().pipe(
+      tap(cats => console.log('Loaded categories:', cats)),
+      catchError(err => {
+        console.error('Fehler beim Laden der Kategorien:', err);
+        return of(['lounge', 'restaurant', 'cafe', 'bar', 'fast_food', 'nightclub', 'galerie']);
+      })
+    ).subscribe(cats => {
+      this.categories = cats;
+      console.log('PoiFilter initialized with categories:', this.categories);
     });
+
+    console.log('PoiFilter initialized with categories:', this.categories);
   }
 
   onSubmit() {

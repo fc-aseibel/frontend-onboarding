@@ -10,7 +10,6 @@ describe('Map', () => {
   let poisServiceSpy: jasmine.SpyObj<PoisApiService>;
 
   beforeEach(async () => {
-    // ✅ Spy HIER erstellen, damit du pro Test frischen Spy hast
     poisServiceSpy = jasmine.createSpyObj('PoisApiService', ['getPoisInRadius', 'getCategories']);
     poisServiceSpy.getPoisInRadius.and.returnValue(of([]));
     poisServiceSpy.getCategories.and.returnValue(of([]));

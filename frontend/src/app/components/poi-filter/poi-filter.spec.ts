@@ -6,7 +6,6 @@ import { of, throwError } from 'rxjs';
 
 describe('PoiFilter', () => {
   let component: PoiFilter;
-  let fixture: ComponentFixture<PoiFilter>;
   let apiSpy: jasmine.SpyObj<PoisApiService>;
 
   beforeEach(async () => {
@@ -19,8 +18,7 @@ describe('PoiFilter', () => {
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PoiFilter);
-    component = fixture.componentInstance;
+    component = TestBed.createComponent(PoiFilter).componentInstance;
   });
 
   it('should create', () => {

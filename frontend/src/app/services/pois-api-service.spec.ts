@@ -1,22 +1,33 @@
 import { TestBed } from '@angular/core/testing';
 import { PoisApiService, Poi } from './pois-api-service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { of } from 'rxjs';
+import { AppConfigService } from './app-config-service';
 
 describe('PoisApiService', () => {
   let service: PoisApiService;
   let httpMock: HttpTestingController;
 
+  const mockConfig = {
+    apiBaseUrl$: of('http://localhost:3000')
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [PoisApiService]
-    });
+      providers: [
+        PoisApiService,
+        { provide: AppConfigService, useValue: mockConfig }
+      ]
+    })
+
     service = TestBed.inject(PoisApiService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
-    httpMock.verify(); // Check, ob keine offenen Requests mehr da sind
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -52,7 +63,6 @@ describe('PoisApiService', () => {
       r.params.get('lon') === '10' &&
       r.params.get('radius') === '1'
     );
-
     expect(req.request.method).toBe('GET');
     req.flush(mockPois);
   });
@@ -66,12 +76,11 @@ describe('PoisApiService', () => {
 
     const req = httpMock.expectOne(r =>
       r.url === 'http://localhost:3000/pois-in-radius' &&
-      r.params.get('amenity') === null && // Kein Amenity-Param
+      r.params.get('amenity') === null &&
       r.params.get('lat') === '53.5' &&
       r.params.get('lon') === '10' &&
       r.params.get('radius') === '1'
     );
-
     expect(req.request.method).toBe('GET');
     req.flush(mockPois);
   });

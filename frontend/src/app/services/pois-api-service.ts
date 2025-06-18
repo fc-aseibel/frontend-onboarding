@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, switchMap, take } from 'rxjs';
+import { AppConfigService } from './app-config-service';
 
 export interface Poi {
   id: number;
@@ -11,15 +12,19 @@ export interface Poi {
 }
 
 @Injectable({
-  providedIn: 'root', // This makes the service available application-wide
+  providedIn: 'root',
 })
 export class PoisApiService {
-  private readonly BASE_URL = 'http://localhost:3000';
+  constructor(private http: HttpClient, private config: AppConfigService) {}
 
-  constructor(private http: HttpClient) {}
+  private getBaseUrl(): Observable<string> {
+    return this.config.apiBaseUrl$.pipe(take(1));
+  }
 
   getPois() {
-    return this.http.get<Poi[]>(`${this.BASE_URL}/pois`);
+    return this.getBaseUrl().pipe(
+      switchMap(baseUrl => this.http.get<Poi[]>(`${baseUrl}/pois`))
+    );
   }
 
   getPoisInRadius(
@@ -37,10 +42,14 @@ export class PoisApiService {
       params = params.set('amenity', amenity);
     }
 
-    return this.http.get<Poi[]>(`${this.BASE_URL}/pois-in-radius`, { params });
+    return this.getBaseUrl().pipe(
+      switchMap(baseUrl => this.http.get<Poi[]>(`${baseUrl}/pois-in-radius`, { params }))
+    );
   }
 
   getCategories(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.BASE_URL}/categories`);
+    return this.getBaseUrl().pipe(
+      switchMap(baseUrl => this.http.get<string[]>(`${baseUrl}/categories`))
+    );
   }
 }

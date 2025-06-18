@@ -1,9 +1,17 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
-import { appConfig } from './app/app.config';
 import { App } from './app/app';
+import { inject, provideAppInitializer } from '@angular/core';
+import { AppConfigService } from './app/services/app-config-service';
 
 bootstrapApplication(App, {
-  providers: [provideHttpClient()]
+  providers: [
+    provideHttpClient(),
+    provideAppInitializer(() => {
+      const cfg = inject(AppConfigService);
+      return cfg.loadConfig();
+    }),
+  ],
+
 })
   .catch(err => console.error(err));
