@@ -1,0 +1,24 @@
+name: POI Service Mock CI
+on: [push]
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Npm Install
+        run: ./npm install
+        working-directory: ./poi-service-mock
+
+      - name: ✅ Run Unit Tests
+        run: ./npx jest
+        working-directory: ./poi-service-mock
+
+      - name: 🚀 Deploy Application to GHCR
+        run: ./deploy.sh
+        working-directory: ./poi-service-mock
+        env:
+          VERSION: ${{ github.sha }}
+          GHCR_PAT: ${{ secrets.GHCR_PAT }}
+          GITHUB_ACTOR: ${{ github.actor }}

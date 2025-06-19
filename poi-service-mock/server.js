@@ -1,6 +1,6 @@
 const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router('poi-data.json');
+const router = jsonServer.router('./poi-data.json');
 const middlewares = jsonServer.defaults();
 
 // Standard Middleware
@@ -45,6 +45,11 @@ server.get('/pois', (req, res) => {
 // Standard-API
 server.use(router);
 
-server.listen(3000, () => {
-  console.log('✅ Mock-Server läuft auf http://localhost:3000');
-});
+// Server nur starten, wenn die Datei direkt ausgeführt wird
+if (require.main === module) {
+  server.listen(3000, '0.0.0.0', () => {
+    console.log('✅ POI Service Mock läuft auf http://localhost:3000');
+  });
+}
+
+module.exports = server; // Exportiere den Server für Tests

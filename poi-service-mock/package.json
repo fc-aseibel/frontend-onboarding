@@ -1,5 +1,5 @@
 {
-  "name": "mock-server",
+  "name": "poi-service-mock",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -13,5 +13,8 @@
   "dependencies": {
     "json-server": "^0.16.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest":"30.0.0",
+    "supertest": "7.1.1"
+  }
 }
