@@ -22,17 +22,20 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./frontend
 
       - name: Set target URL in environment.ts
         run: |
-          sed -i "s|http://localhost:4200/api|https://fc-aseibel.github.io/frontend/assets/data|g" src/environments/environment.ts
+          sed -i "s|http://localhost:4200/api|https://fc-aseibel.github.io/frontend-onboarding/assets/data|g" src/environments/environment.ts
+        working-directory: ./frontend
 
       - name: Build Angular app
         run: |
-          npx ng build --base-href "https://fc-aseibel.github.io/frontend"
+          npx ng build --base-href "/frontend-onboarding/"
+        working-directory: ./frontend
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./dist/frontend/browser
+          publish_dir: ./frontend/dist/frontend/browser
