@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -26,7 +27,7 @@ jobs:
 
       - name: Set target URL in environment.ts
         run: |
-          sed -i "s|http://localhost:4200/api|https://fc-aseibel.github.io/frontend-onboarding/assets/data|g" src/environments/environment.ts
+          sed -i "s|http://localhost:4200/api|${{ secrets.TARGET_URL }}|g" src/environments/environment.ts
         working-directory: ./frontend
 
       - name: Build Angular app
