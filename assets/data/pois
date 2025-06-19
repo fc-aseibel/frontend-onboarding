@@ -1,0 +1,345 @@
+[
+    {
+      "lat": 53.5686285,
+      "lon": 10.1111633,
+      "amenity": "university",
+      "name": "Helmut-Schmidt-Universität – Universität der Bundeswehr Hamburg",
+      "id": 1
+    },
+    {
+      "lat": 53.6182328,
+      "lon": 10.0870443,
+      "amenity": "social_facility",
+      "name": "Theodor-Fliedner-Haus",
+      "id": 2
+    },
+    {
+      "lat": 53.6215174,
+      "lon": 10.0939191,
+      "amenity": "social_facility",
+      "name": "Seniorenwohnanlage Max-Brauer-Haus",
+      "id": 3
+    },
+    {
+      "lat": 53.5572255,
+      "lon": 9.9784822,
+      "amenity": "courthouse",
+      "name": "Strafgericht",
+      "id": 4
+    },
+    {
+      "lat": 53.5554867,
+      "lon": 9.976275,
+      "amenity": "courthouse",
+      "name": "Land- und Amtsgericht Hamburg",
+      "id": 5
+    },
+    {
+      "lat": 53.6211905,
+      "lon": 9.9864713,
+      "amenity": "restaurant",
+      "name": "Kantine 2 - 370",
+      "id": 6
+    },
+    {
+      "lat": 53.5693413,
+      "lon": 9.8311867,
+      "amenity": "social_facility",
+      "name": "Rosenhof Hamburg",
+      "id": 7
+    },
+    {
+      "lat": 53.6258993,
+      "lon": 10.0079666,
+      "amenity": "parking",
+      "name": "Mitarbeiterparkhaus",
+      "id": 8
+    },
+    {
+      "lat": 53.462178,
+      "lon": 9.9839226,
+      "amenity": "parking",
+      "name": "Karstadt",
+      "id": 9
+    },
+    {
+      "lat": 53.5107318,
+      "lon": 10.0929208,
+      "amenity": "parking",
+      "name": "IKEA Moorfleet",
+      "id": 10
+    },
+    {
+      "lat": 53.6202005,
+      "lon": 9.9990895,
+      "amenity": "parking",
+      "name": "P9",
+      "id": 11
+    },
+    {
+      "lat": 53.6014276,
+      "lon": 10.036453,
+      "amenity": "doctors",
+      "name": "Radiologische Allianz",
+      "id": 12
+    },
+    {
+      "lat": 53.5621949,
+      "lon": 9.9851916,
+      "amenity": "conference_centre",
+      "name": "Congress Centrum Hamburg",
+      "id": 13
+    },
+    {
+      "lat": 53.4996049,
+      "lon": 10.0033856,
+      "amenity": "school",
+      "name": "Berufliche Schule ITECH Elbinsel Wilhelmsburg, BS 14",
+      "id": 14
+    },
+    {
+      "lat": 53.4902058,
+      "lon": 10.2104089,
+      "amenity": "courthouse",
+      "name": "Amtsgericht Hamburg-Bergedorf",
+      "id": 15
+    },
+    {
+      "lat": 53.5718607,
+      "lon": 9.9565308,
+      "amenity": "community_centre",
+      "name": "Hamburg-Haus Eimsbüttel",
+      "id": 16
+    },
+    {
+      "lat": 53.559017,
+      "lon": 10.0311583,
+      "amenity": "hospital",
+      "name": "Marienkrankenhaus",
+      "id": 17
+    },
+    {
+      "lat": 53.4436984,
+      "lon": 9.9894171,
+      "amenity": "social_facility",
+      "name": "Wohnpark Außenmühle",
+      "id": 18
+    },
+    {
+      "lat": 53.5541477,
+      "lon": 9.9705052,
+      "amenity": "events_venue",
+      "name": "Heiligengeistfeld",
+      "id": 19
+    },
+    {
+      "lat": 53.5718116,
+      "lon": 9.9661551,
+      "amenity": "hospital",
+      "name": "Agaplesion Diakonieklinikum Hamburg",
+      "id": 20
+    },
+    {
+      "lat": 53.6730898,
+      "lon": 10.0463312,
+      "amenity": "parking",
+      "name": "Parkplatz am Hummelsee",
+      "id": 21
+    },
+    {
+      "lat": 53.6359601,
+      "lon": 10.0079466,
+      "amenity": "parking",
+      "name": "P1",
+      "id": 22
+    },
+    {
+      "lat": 53.5907493,
+      "lon": 9.9746838,
+      "amenity": "hospital",
+      "name": "Universitätsklinikum Eppendorf",
+      "id": 23
+    },
+    {
+      "lat": 53.5600314,
+      "lon": 10.0307425,
+      "amenity": "college",
+      "name": "Berufliche Schule Stahl- und Maschinenbau",
+      "id": 24
+    },
+    {
+      "lat": 53.5064898,
+      "lon": 10.1933263,
+      "amenity": "school",
+      "name": "Grundschule Mendelstraße",
+      "id": 25
+    },
+    {
+      "lat": 53.4733544,
+      "lon": 9.8790107,
+      "amenity": "parking",
+      "name": "P+R Neuwiedenthal Ost",
+      "id": 26
+    },
+    {
+      "lat": 53.4744284,
+      "lon": 9.8755342,
+      "amenity": "parking",
+      "name": "Rewe",
+      "id": 27
+    },
+    {
+      "lat": 53.6137261,
+      "lon": 10.0213051,
+      "amenity": "school",
+      "name": "Kurt-Juster-Schule",
+      "id": 28
+    },
+    {
+      "lat": 53.4721738,
+      "lon": 9.8925079,
+      "amenity": "parking",
+      "name": "Lidl Cuxhavener Straße",
+      "id": 29
+    },
+    {
+      "lat": 53.4778763,
+      "lon": 9.8856692,
+      "amenity": "parking",
+      "name": "REWE",
+      "id": 30
+    },
+    {
+      "lat": 53.6185156,
+      "lon": 10.0276404,
+      "amenity": "school",
+      "name": "Schule Alsterpalais",
+      "id": 31
+    },
+    {
+      "lat": 53.4562007,
+      "lon": 9.9900242,
+      "amenity": "parking",
+      "name": "Bahnhof Harburg",
+      "id": 32
+    },
+    {
+      "lat": 53.4744464,
+      "lon": 9.8555506,
+      "amenity": "parking",
+      "name": "P+R Neugraben",
+      "id": 33
+    },
+    {
+      "lat": 53.4713613,
+      "lon": 9.8968065,
+      "amenity": "fuel",
+      "name": "Tankstelle Meyer",
+      "id": 34
+    },
+    {
+      "lat": 53.4715094,
+      "lon": 9.8936042,
+      "amenity": "fuel",
+      "name": "OIL!",
+      "id": 35
+    },
+    {
+      "lat": 53.578108,
+      "lon": 10.0473892,
+      "amenity": "school",
+      "name": "Adolph-Schönfelder-Schule",
+      "id": 36
+    },
+    {
+      "lat": 53.5544744,
+      "lon": 10.0712981,
+      "amenity": "social_facility",
+      "name": "Das Rauhe Haus",
+      "id": 37
+    },
+    {
+      "lat": 53.6409515,
+      "lon": 9.9612064,
+      "amenity": "school",
+      "name": "Stadtteilschule Niendorf",
+      "id": 38
+    },
+    {
+      "lat": 53.4615837,
+      "lon": 9.9800548,
+      "amenity": "parking",
+      "name": "Marktplatz Sand",
+      "id": 39
+    },
+    {
+      "lat": 53.5545144,
+      "lon": 9.892074,
+      "amenity": "social_facility",
+      "name": "Ernst und Claere Jung Stiftung",
+      "id": 40
+    },
+    {
+      "lat": 53.5591322,
+      "lon": 9.9454939,
+      "amenity": "community_centre",
+      "name": "Spielhaus Zeiseweg",
+      "id": 41
+    },
+    {
+      "lat": 53.5562309,
+      "lon": 9.9430903,
+      "amenity": "courthouse",
+      "name": "Amtsgericht Hamburg-Altona",
+      "id": 42
+    },
+    {
+      "lat": 53.583912,
+      "lon": 9.8520035,
+      "amenity": "research_institute",
+      "name": "European XFEL",
+      "id": 43
+    },
+    {
+      "lat": 53.5709092,
+      "lon": 9.9647999,
+      "amenity": "clinic",
+      "name": "Agaplesion Medizinisches Versorgungszentrum am DKH",
+      "id": 44
+    },
+    {
+      "lat": 53.7089725,
+      "lon": 10.1447945,
+      "amenity": "social_facility",
+      "name": "Hände für Kinder",
+      "id": 45
+    },
+    {
+      "lat": 53.6083881,
+      "lon": 9.9130246,
+      "amenity": "school",
+      "name": "Gymnasium Dörpsweg",
+      "id": 46
+    },
+    {
+      "lat": 53.6579939,
+      "lon": 10.0169564,
+      "amenity": "school",
+      "name": "Fritz-Schumacher-Schule",
+      "id": 47
+    },
+    {
+      "lat": 40.5512524,
+      "lon": -75.974361,
+      "amenity": "school",
+      "name": "Hamburg Area High School",
+      "id": 48
+    },
+    {
+      "lat": 53.6300453,
+      "lon": 10.097897,
+      "amenity": "school",
+      "name": "Gymnasium Grootmoor",
+      "id": 49
+    }
+]
