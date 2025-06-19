@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages (Static)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.1.0'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set target URL in environment.ts
+        run: |
+          sed -i "s|http://localhost:4200/api|https://fc-aseibel.github.io/frontend/assets/data|g" src/environments/environment.ts
+
+      - name: Build Angular app
+        run: |
+          npx ng build --base-href "https://fc-aseibel.github.io/frontend"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./dist/frontend/browser

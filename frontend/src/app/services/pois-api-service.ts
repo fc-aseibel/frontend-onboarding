@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, switchMap, take } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Poi {
   id: number;
@@ -14,10 +15,11 @@ export interface Poi {
   providedIn: 'root',
 })
 export class PoisApiService {
-  constructor(private http: HttpClient) {}
+readonly targetUrl = environment.targetUrl;
+constructor(private http: HttpClient) {}
 
   getPois(): Observable<Poi[]>{
-    return this.http.get<Poi[]>('/frontend/api/pois');
+    return this.http.get<Poi[]>(`${this.targetUrl}/pois`);
   }
 
   getPoisInRadius(
@@ -35,10 +37,10 @@ export class PoisApiService {
       params = params.set('category', amenity);
     }
 
-    return this.http.get<Poi[]>('/frontend/api/pois', { params });
+    return this.http.get<Poi[]>(`${this.targetUrl}/pois`, { params });
   }
 
   getCategories(): Observable<string[]> {
-    return this.http.get<string[]>('/frontend/api/categories');
+    return this.http.get<string[]>(`${this.targetUrl}/categories`);
   }
 }
