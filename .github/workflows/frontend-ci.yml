@@ -12,12 +12,17 @@ jobs:
         with:
           node-version: '24.1.0'
 
-      - name: 🏗️ Build Angular App
-        run: ./build.sh
-        working-directory: ./frontend
-
       - name: ✅ Run Unit Tests
         run: ./test.sh
+        working-directory: ./frontend
+
+      - name: Set target URL in environment.ts (# Remove local URL)
+        run: |
+          sed -i "s|http://localhost:4200||g" src/environments/environment.ts
+        working-directory: ./frontend
+
+      - name: 🏗️ Build Angular App
+        run: ./build.sh
         working-directory: ./frontend
 
       - name: 🚀 Deploy Application to GHCR
